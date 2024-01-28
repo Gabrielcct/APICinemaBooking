@@ -1,11 +1,38 @@
+using APICinema.Models;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.EntityFrameworkCore;
+using System.Globalization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Add DbContext configuration for UserContext
+builder.Services.AddDbContext<UserContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection"))
+);
+
+// Add DbContext configurations for other classes if needed (e.g., BookingsContext, MovieContext, etc.)
+
+// Configure the default request culture
+/*var supportedCultures = new[] { new CultureInfo("en-US") };
+var requestLocalizationOptions = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture("en-US"),
+    SupportedCultures = supportedCultures,
+    SupportedUICultures = supportedCultures
+};
+
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    options.DefaultRequestCulture = requestLocalizationOptions.DefaultRequestCulture;
+    options.SupportedCultures = requestLocalizationOptions.SupportedCultures;
+    options.SupportedUICultures = requestLocalizationOptions.SupportedUICultures;
+});*/
 
 var app = builder.Build();
 
@@ -16,6 +43,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//app.UseRequestLocalization(requestLocalizationOptions);
 app.UseAuthorization();
 
 app.MapControllers();

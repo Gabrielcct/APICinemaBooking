@@ -7,6 +7,7 @@ namespace APICinema.Models
     {
         [Key]
         public int UserId { get; set; }
+
         [Column(TypeName = "nvarchar(100)")]
         public string UserName { get; set; } = "";
         [Column(TypeName = "nvarchar(100)")]
