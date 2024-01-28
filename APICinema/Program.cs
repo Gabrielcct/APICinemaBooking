@@ -16,6 +16,10 @@ builder.Services.AddDbContext<UserContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection"))
 );
 
+builder.Services.AddDbContext<AccountTypeContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection"))
+);
+
 // Add DbContext configurations for other classes if needed (e.g., BookingsContext, MovieContext, etc.)
 
 // Configure the default request culture
