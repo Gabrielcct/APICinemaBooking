@@ -20,6 +20,17 @@ builder.Services.AddDbContext<AccountTypeContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection"))
 );
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularFrontend",
+           builder =>
+           {
+               builder.WithOrigins("http://localhost:4200") // Replace with your Angular frontend URL
+                      .AllowAnyHeader()
+                      .AllowAnyMethod();
+           });
+});
+
 // Add DbContext configurations for other classes if needed (e.g., BookingsContext, MovieContext, etc.)
 
 // Configure the default request culture
@@ -46,7 +57,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("AllowAngularFrontend");
 //app.UseRequestLocalization(requestLocalizationOptions);
 app.UseAuthorization();
 

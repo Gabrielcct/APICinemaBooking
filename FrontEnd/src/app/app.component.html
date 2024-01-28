@@ -1,0 +1,43 @@
+
+
+<main class="main">
+
+  <div class="container-fluid">
+    <header class="">
+      <!-- Header here -- Navigation in header -->
+      <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+          <a class="navbar-brand white-txt" href="#">Cineworld</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row justify-content-between w-100">
+              <div class="left-navigation d-flex flex-row">
+                <li class="nav-item">
+                  <a class="nav-link active white-txt" aria-current="page" href="#">Home</a>
+                </li>
+              </div>
+              <div class="right-navigation d-flex flex-row">
+                <li class="nav-item">
+                  <a class="nav-link white-txt" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link white-txt" routerLink="/register" routerLinkActive="active" ariaCurrentWhenActive="page">Register</a>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    </header>
+    
+    <div class="container white-bck d-flex content">
+      <!-- Content Inside here-->
+      <router-outlet></router-outlet>
+    </div>
+ 
+  </div>
+
+</main>
